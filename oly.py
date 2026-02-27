@@ -30,11 +30,8 @@ fig2 = px.bar(athlete_counts, x="country", y="count", color="country", title="To
 fig3 = px.scatter(filtered_df, x="height_cm", y="weight_kg", color="sport", 
                  hover_name="athlete_name", title="Physical Profile of Selected Athletes")
 
-country_trend = df[df["medal"].isin(selected_medals)].groupby("year")["country_best_rank"].min().reset_index()
-fig4 = px.line(country_trend, x="year", y="country_best_rank", title="Global Rank Trend for Selected Medals")
-fig4.update_yaxes(autorange="reversed") 
 
-fig5 = px.histogram(filtered_df, x="age", color="medal", nbins=20, title="Age Distribution of the Selection")
+fig4 = px.histogram(filtered_df, x="age", color="medal", nbins=20, title="Age Distribution of the Selection")
 
 col1, col2 = st.columns(2)
 with col1:
@@ -48,7 +45,6 @@ with col3:
 with col4:
     st.plotly_chart(fig4, use_container_width=True)
 
-st.plotly_chart(fig5, use_container_width=True)
 
 st.divider()
 st.markdown("### Data Documentation")
